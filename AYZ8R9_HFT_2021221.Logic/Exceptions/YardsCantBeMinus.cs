@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic.Exceptions
 {
-    class YardsCantBeMinus : Exception
+    public class YardsCantBeMinus : Exception
     {
         public YardsCantBeMinus(string message) : base(message)
         {

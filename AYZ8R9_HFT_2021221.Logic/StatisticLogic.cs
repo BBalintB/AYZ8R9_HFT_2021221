@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic
 {
-    class StatisticLogic : IStatisticLogic
+    public class StatisticLogic : IStatisticLogic
     {
-        StatisticRepository statRepo;
-        public StatisticLogic(StatisticRepository statRepo)
+        IStatisticRepository statRepo;
+        public StatisticLogic(IStatisticRepository statRepo)
         {
             this.statRepo = statRepo;
         }
@@ -83,30 +83,15 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void CreateStatistic(Statistic NewStatistic)
         {
-            if (TheSame(NewStatistic))
-            {
-                throw new AlreadyExist("[Err] The team is already exist...");
-            }
             statRepo.Create(NewStatistic);
         }
-        bool TheSame(Statistic stat)
-        {
-            bool theSame = false;
-            foreach (var item in statRepo.GetAll())
-            {
-                if (item == stat)
-                {
-                    theSame = true;
-                }
-            }
-            return theSame;
-        }
+       
 
         public void DeleteStatistic(int id)
         {
             if (!TheSame(id))
             {
-                throw new ItDoesNotExist("[Err] The team is not exist...");
+                throw new ItDoesNotExist("[Err] The statistic is not exist...");
             }
             statRepo.Delete(id);
         }

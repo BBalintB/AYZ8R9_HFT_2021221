@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic
 {
-    class TeamLogic : ITeamLogic
+    public class TeamLogic : ITeamLogic
     {
         ITeamRepository teamRepo;
         public TeamLogic(ITeamRepository teamRepo)
@@ -61,7 +61,7 @@ namespace AYZ8R9_HFT_2021221.Logic
             bool theSame = false;
             foreach (var item in teamRepo.GetAll())
             {
-                if (item == team)
+                if (item.City == team.City && item.Division == team.Division && item.Stadium == team.Stadium && item.HeadCoach == team.HeadCoach)
                 {
                     theSame = true;
                 }

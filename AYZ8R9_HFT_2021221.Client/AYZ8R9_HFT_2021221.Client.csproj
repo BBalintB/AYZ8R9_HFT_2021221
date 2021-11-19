@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AYZ8R9_HFT_2021221.Data\AYZ8R9_HFT_2021221.Data.csproj" />
+    <ProjectReference Include="..\AYZ8R9_HFT_2021221.Logic\AYZ8R9_HFT_2021221.Logic.csproj" />
     <ProjectReference Include="..\AYZ8R9_HFT_2021221.Models\AYZ8R9_HFT_2021221.Models.csproj" />
     <ProjectReference Include="..\AYZ8R9_HFT_2021221.Repository\AYZ8R9_HFT_2021221.Repository.csproj" />
   </ItemGroup>

@@ -17,6 +17,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         void ChangeJerseyNumber(int id, int number);
         IEnumerable<Player> GetAllPlayers();
         //non-crud
-        
+        IEnumerable<Player> MostReceivingYards();
+        IEnumerable<Player> MostPassingYards();
+        IEnumerable<Player> MostRushingYards();
+        IEnumerable<Player> MostTouchdowns();
+        IEnumerable<Player> PlayersByTeam(string name);
+
     }
 }

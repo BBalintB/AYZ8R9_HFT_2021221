@@ -14,10 +14,10 @@ namespace AYZ8R9_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StatId { get; set; }
-        public int? Touchdowns { get; set; }
-        public int? PassingYards { get; set; }
-        public int? ReceivingYards { get; set; }
-        public int? RushingYards { get; set; }
+        public int Touchdowns { get; set; }
+        public int PassingYards { get; set; }
+        public int ReceivingYards { get; set; }
+        public int RushingYards { get; set; }
         [NotMapped]
         public virtual Player Player { get; set; }
 

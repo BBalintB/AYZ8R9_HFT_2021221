@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic
 {
-    interface IPlayerLogic
+    public interface IPlayerLogic
     {
         //crud
         Player GetPlayer(int id);

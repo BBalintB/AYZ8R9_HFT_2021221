@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic
 {
-    interface IStatisticLogic
+    public interface IStatisticLogic
     {
         Statistic GetStastic(int id);
         void CreateStatistic(Statistic NewStatistic);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic
 {
-    interface ITeamLogic
+    public interface ITeamLogic
     {
         Team GetTeam(int id);
         void ChangeTeamName(int id, string newName);

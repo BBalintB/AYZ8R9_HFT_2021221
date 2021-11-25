@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Models
@@ -21,10 +22,12 @@ namespace AYZ8R9_HFT_2021221.Models
         public string Position { get; set; }
         public int Age { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual Statistic Stat { get; set; }
         [ForeignKey(nameof(Stat))]
         public int? StatID { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual Team Teams { get; set; }
         [ForeignKey(nameof(Teams))]
         public int? TeamID { get; set; }

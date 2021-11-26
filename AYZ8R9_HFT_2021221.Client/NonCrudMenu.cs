@@ -16,7 +16,7 @@ namespace AYZ8R9_HFT_2021221.Client
             {
                 Console.Clear();
                 Console.WriteLine("////////////////////////////////////");
-                Console.WriteLine("//             Teams              //");
+                Console.WriteLine("//      Multiple table select     //");
                 Console.WriteLine("//                                //");
                 Console.WriteLine("//    1 - Most receivingyards     //");
                 Console.WriteLine("//    2 - Most rushingyards       //");

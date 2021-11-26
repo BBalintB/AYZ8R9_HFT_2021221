@@ -22,7 +22,8 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//   1 - Players      //");
                 Console.WriteLine("//   2 - Teams        //");
                 Console.WriteLine("//   3 - Statistics   //");
-                Console.WriteLine("//   4 - Non-Crud     //");
+                Console.WriteLine("//   4 - Multiple     //");
+                Console.WriteLine("//       table select //");
                 Console.WriteLine("//   5 - Exit         //");
                 Console.WriteLine("//                    //");
                 Console.WriteLine("////////////////////////");

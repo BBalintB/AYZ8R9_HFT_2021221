@@ -39,6 +39,12 @@ namespace AYZ8R9_HFT_2021221.Client
                     case 3:
                         StatisticMenu.Executee(rest);
                         break;
+                    case 4:
+                        NonCrudMenu.Executee(rest);
+                        break;
+                    case 5:
+                        Console.WriteLine("Good bye!!");
+                        break;
                     default:
                         break;
                 }

@@ -45,9 +45,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             return playerLogic.MostTouchdowns();
         }
 
-        // GET: /Noncrud/PlayersByTeam
-        [HttpGet]
-        public IEnumerable<Player> PlayersByTeam([FromBody]string team)
+        // GET: /Noncrud/PlayersByTeam/Team
+        [HttpGet("{Team}")]
+        public IEnumerable<Player> PlayersByTeam(string team)
         {
             return playerLogic.PlayersByTeam(team);
         }

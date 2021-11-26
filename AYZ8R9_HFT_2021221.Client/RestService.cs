@@ -78,10 +78,10 @@ namespace AYZ8R9_HFT_2021221.Client
                 Client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
             response.EnsureSuccessStatusCode();
         }
-        public void Put<T>(T item, string endpoint)
+        public void Put(int id,string choose,string item, string endpoint)
         {
             HttpResponseMessage response =
-                Client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+                Client.PutAsJsonAsync(endpoint+"/"+id.ToString()+"/"+choose,item).GetAwaiter().GetResult();
             response.EnsureSuccessStatusCode();
         }
     }

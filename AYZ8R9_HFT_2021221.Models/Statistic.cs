@@ -25,7 +25,7 @@ namespace AYZ8R9_HFT_2021221.Models
         
         public override string ToString()
         {
-            return $"{StatId}-{Touchdowns}-{PassingYards}-{ReceivingYards}-{RushingYards}";
+            return $"Statistic ID: {StatId}, Touchdowns: {Touchdowns}, Passingyards: {PassingYards}, Receivingyards: {ReceivingYards}, Rushingyards: {RushingYards}";
         }
     }
 }

@@ -31,7 +31,7 @@ namespace AYZ8R9_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{PlayerName}, {PlayerJerseyNumber}, {Age}";
+            return $"Player ID: {PlayerId} Name: {PlayerName}, Jersey number: {PlayerJerseyNumber},Position: {Position},Age: {Age},StatID: {StatID}, TeamID: {TeamID}";
         }
     }
 }

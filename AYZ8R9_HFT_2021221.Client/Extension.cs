@@ -10,12 +10,11 @@ namespace AYZ8R9_HFT_2021221.Client
     {
         public static void ToProcess<T>(this IEnumerable<T> query, string headline)
         {
-            Console.WriteLine($"\n:: {headline} ::\n");
+            Console.WriteLine($"**\t{headline}\t**");
 
             foreach (var item in query)
-                Console.WriteLine("\t" + item);
-
-            Console.WriteLine("\n\n");
+                Console.WriteLine($"* \t{item}\t *");
+            
         }
     }
 }

@@ -44,11 +44,11 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpPut("{id}/{choose}")]
         public void Put(int id,string choose, [FromBody] string value)
         {
-            if (choose == "Team")
+            if (choose == "team")
             {
                 teamLogic.ChangeTeamName(id, value);
             }
-            else if(choose == "Coach")
+            else if(choose == "coach")
             {
                 teamLogic.ChangeCoach(id, value);
             }

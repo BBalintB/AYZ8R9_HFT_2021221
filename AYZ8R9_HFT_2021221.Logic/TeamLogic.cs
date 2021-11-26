@@ -18,9 +18,9 @@ namespace AYZ8R9_HFT_2021221.Logic
         }
         public void ChangeCoach(int id, string newCoach)
         {
-            if (id > teamRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newCoach == "")
             {
@@ -28,15 +28,15 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
             else
             {
-                teamRepo.ChangeName(id, newCoach);
+                teamRepo.Changecoach(id, newCoach);
             }
         }
 
         public void ChangeTeamName(int id, string newName)
         {
-            if (id > teamRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newName == "")
             {
@@ -98,9 +98,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public Team GetTeam(int id)
         {
-            if (id > teamRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             return teamRepo.GetOne(id);
         }

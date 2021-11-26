@@ -23,7 +23,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//   2 - Teams        //");
                 Console.WriteLine("//   3 - Statistics   //");
                 Console.WriteLine("//   4 - Non-Crud     //");
-                Console.WriteLine("//   4 - Exit         //");
+                Console.WriteLine("//   5 - Exit         //");
                 Console.WriteLine("//                    //");
                 Console.WriteLine("////////////////////////");
                 Console.WriteLine("Choose: ");
@@ -32,6 +32,12 @@ namespace AYZ8R9_HFT_2021221.Client
                 {
                     case 1:
                         PlayerMenu.Executee(rest);
+                        break;
+                    case 2:
+                        TeamMenu.Executee(rest);
+                        break;
+                    case 3:
+                        StatisticMenu.Executee(rest);
                         break;
                     default:
                         break;

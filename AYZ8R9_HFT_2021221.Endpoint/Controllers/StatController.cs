@@ -21,21 +21,21 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         {
             this.statisticLogic = statisticLogic;
         }
-        // GET: api/stat
+        // GET: /stat
         [HttpGet]
         public IEnumerable<Statistic> Get()
         {
             return statisticLogic.GetAllStatistic();
         }
 
-        // GET api/stat/5
+        // GET /stat/5
         [HttpGet("{id}")]
         public Statistic Get(int id)
         {
             return statisticLogic.GetStastic(id);
         }
 
-        // POST api/stat
+        // POST /stat
         [HttpPost]
         public void Post([FromBody] Statistic value)
         {
@@ -61,7 +61,7 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
         }
 
-        // DELETE api/stat/5
+        // DELETE /stat/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

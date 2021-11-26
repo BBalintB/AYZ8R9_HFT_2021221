@@ -32,7 +32,7 @@ namespace AYZ8R9_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"{TeamId}-{TeamName}-{HeadCoach}-{Stadium}-{City}-{Division}";
+            return $"TeamID: {TeamId}, Team name: {TeamName}, Head Coach{HeadCoach}, Stadium: {Stadium}, City: {City}, Division: {Division}";
         }
     }
 }

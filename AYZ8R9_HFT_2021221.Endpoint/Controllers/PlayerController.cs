@@ -22,42 +22,44 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             this.PlayerLogic = playerLogic;
         }
 
-        // GET: api/player
+        // GET: /player
         [HttpGet]
         public IEnumerable<Player> Get()
         {
             return PlayerLogic.GetAllPlayers();
         }
 
-        // GET api/player/5
+        // GET /player/5
         [HttpGet("{id}")]
         public Player Get(int id)
         {
             return PlayerLogic.GetPlayer(id);
         }
 
-        // POST api/player
+        // POST /player
         [HttpPost]
         public void Post([FromBody] Player value)
         {
             PlayerLogic.CreatePlayer(value);
         }
 
-        // PUT api/player/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT /player/5/update
+        [HttpPut("{id}/{update}")]
+        public void Put(int id,string update, [FromBody] string value)
         {
-            PlayerLogic.ChangeName(id, value);
+            if (update == "name")
+            {
+                PlayerLogic.ChangeName(id, value);
+            }
+            else if(update == "jersey"){
+                PlayerLogic.ChangeJerseyNumber(id, int.Parse(value));
+            }
+            
         }
 
-        // PUT api/player/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] int value)
-        {
-            PlayerLogic.ChangeJerseyNumber(id, value);
-        }
+        
 
-        // DELETE api/player/5
+        // DELETE /player/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

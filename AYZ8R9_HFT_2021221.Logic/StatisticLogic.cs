@@ -29,7 +29,7 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
             else
             {
-                statRepo.ChangePassingyard(id,newPYards);
+                statRepo.ChangePassingyard(id, newPYards);
             }
         }
 
@@ -45,7 +45,7 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
             else
             {
-                statRepo.ChangeRecievingyard(id,newReYards);
+                statRepo.ChangeRecievingyard(id, newReYards);
             }
         }
 

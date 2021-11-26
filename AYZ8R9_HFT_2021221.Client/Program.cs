@@ -22,7 +22,7 @@ namespace AYZ8R9_HFT_2021221.Client
             var p2 = p1.Select(x => x.PlayerName).FirstOrDefault();
             var mostTouchdowns = pLogic.MostTouchdowns();
             var name = mostTouchdowns.Select(x => x.PlayerName).SingleOrDefault();
-            
+            ;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AYZ8R9_HFT_2021221.Logic;
+using AYZ8R9_HFT_2021221.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,55 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
-        // GET: api/team
+        ITeamLogic teamLogic;
+        public TeamController(ITeamLogic teamLogic)
+        {
+            this.teamLogic = teamLogic;
+        }
+        // GET: /team
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Team> Get()
         {
-            return new string[] { "value1", "value2" };
+            return teamLogic.GetAllTeams();
         }
 
-        // GET api/team/5
+        // GET /team/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Team Get(int id)
         {
-            return "value";
+            return teamLogic.GetTeam(id);
         }
 
-        // POST api/team
+        // POST /team
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Team value)
         {
+            teamLogic.CreateTeam(value);
         }
 
-        // PUT api/team/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT /team/5
+        [HttpPut("{id}/{choose}")]
+        public void Put(int id,string choose, [FromBody] string value)
         {
+            if (choose == "Team")
+            {
+                teamLogic.ChangeTeamName(id, value);
+            }
+            else if(choose == "Coach")
+            {
+                teamLogic.ChangeCoach(id, value);
+            }
         }
 
-        // DELETE api/team/5
+        // DELETE /team/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            teamLogic.DeleteTeam(id);
         }
     }
 }

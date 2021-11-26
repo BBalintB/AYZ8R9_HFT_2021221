@@ -22,7 +22,7 @@ namespace AYZ8R9_HFT_2021221.Models
         [NotMapped]
         [JsonIgnore]
         public virtual Player Player { get; set; }
-
+        
         public override string ToString()
         {
             return $"{StatId}-{Touchdowns}-{PassingYards}-{ReceivingYards}-{RushingYards}";

@@ -25,12 +25,14 @@ namespace AYZ8R9_HFT_2021221.Test
             this.StatLogic = new StatisticLogic(mockedStatRepo.Object);
         }
         [Test]
-        public void ChangeTouchdownsThrowsExceptionWrongId() {
-            Assert.Throws<WrongId>(() => StatLogic.ChangeTouchdowns(15,15));
+        public void ChangeTouchdownsThrowsExceptionWrongId()
+        {
+            Assert.Throws<WrongId>(() => StatLogic.ChangeTouchdowns(15, 15));
         }
 
         [Test]
-        public void ChangeRushingYardsThrowsExceptionYardsCantBeMinus() {
+        public void ChangeRushingYardsThrowsExceptionYardsCantBeMinus()
+        {
             Assert.Throws<YardsCantBeMinus>(() => StatLogic.ChangeRushingyard(1, -200));
         }
         private IQueryable<Statistic> FakeStatObjects()

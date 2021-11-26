@@ -17,17 +17,14 @@ namespace AYZ8R9_HFT_2021221.Models
         public int PlayerId { get; set; }
         [Required]
         public string PlayerName { get; set; }
-        [MaxLength(2)]
         public int PlayerJerseyNumber { get; set; }
         public string Position { get; set; }
         public int Age { get; set; }
         [NotMapped]
-        [JsonIgnore]
         public virtual Statistic Stat { get; set; }
         [ForeignKey(nameof(Stat))]
         public int? StatID { get; set; }
         [NotMapped]
-        [JsonIgnore]
         public virtual Team Teams { get; set; }
         [ForeignKey(nameof(Teams))]
         public int? TeamID { get; set; }

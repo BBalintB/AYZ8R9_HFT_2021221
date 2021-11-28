@@ -19,9 +19,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void ChangePassingyard(int id, int newPYards)
         {
-            if (id > statRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newPYards < 0)
             {
@@ -35,9 +35,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void ChangeRecievingyard(int id, int newReYards)
         {
-            if (id > statRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newReYards < 0)
             {
@@ -51,9 +51,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void ChangeRushingyard(int id, int newRuYards)
         {
-            if (id > statRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newRuYards < 0)
             {
@@ -67,9 +67,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void ChangeTouchdowns(int id, int newScore)
         {
-            if (id > statRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newScore < 0)
             {
@@ -115,9 +115,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public Statistic GetStastic(int id)
         {
-            if (id > statRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             return statRepo.GetOne(id);
         }

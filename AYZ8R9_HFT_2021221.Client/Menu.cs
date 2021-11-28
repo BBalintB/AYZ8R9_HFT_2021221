@@ -27,7 +27,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//   5 - Exit         //");
                 Console.WriteLine("//                    //");
                 Console.WriteLine("////////////////////////");
-                Console.WriteLine("Choose: ");
+                Console.Write("Choose: ");
                 choose = int.Parse(Console.ReadLine());
                 switch (choose)
                 {
@@ -47,6 +47,7 @@ namespace AYZ8R9_HFT_2021221.Client
                         Console.WriteLine("Good bye!!");
                         break;
                     default:
+                        Console.WriteLine("There is no menupoint like this!!!");
                         break;
                 }
             }

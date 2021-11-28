@@ -98,9 +98,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public Player GetPlayer(int id)
         {
-            if (id > playerRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id not good...");
             }
             return playerRepo.GetOne(id);
         }

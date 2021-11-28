@@ -46,10 +46,18 @@ namespace AYZ8R9_HFT_2021221.Client
         public T GetSingle<T>(string endpoint)
         {
             T item = default(T);
-            HttpResponseMessage response = Client.GetAsync(endpoint).GetAwaiter().GetResult();
-            if (response.IsSuccessStatusCode)
+            try
             {
-                item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+                HttpResponseMessage response = Client.GetAsync(endpoint).GetAwaiter().GetResult();
+                if (response.IsSuccessStatusCode)
+                {
+                    item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
             }
             return item;
         }

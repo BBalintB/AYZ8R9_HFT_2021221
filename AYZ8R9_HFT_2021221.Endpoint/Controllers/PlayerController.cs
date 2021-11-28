@@ -1,4 +1,5 @@
 ﻿using AYZ8R9_HFT_2021221.Logic;
+using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;

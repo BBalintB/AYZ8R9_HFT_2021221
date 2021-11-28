@@ -145,7 +145,7 @@ namespace AYZ8R9_HFT_2021221.Test
             Player LF = new Player() { PlayerId = 12, PlayerName = "Leonard Fournette", PlayerJerseyNumber = 7, Age = 26, Position = "RB", TeamID = TBB.TeamId, StatID = LFS.StatId };
             Player ME = new Player() { PlayerId = 13, PlayerName = "Mike Evans", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = TBB.TeamId, StatID = MES.StatId };
             Player JW = new Player() { PlayerId = 14, PlayerName = "Jameis Winston", PlayerJerseyNumber = 2, Age = 27, Position = "QB", TeamID = NS.TeamId, StatID = JWS.StatId };
-            Player MT = new Player() { PlayerId = 15, PlayerName = "Michael Thomas", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = NS.TeamId, StatID = JWS.StatId };
+            Player MT = new Player() { PlayerId = 15, PlayerName = "Michael Thomas", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = NS.TeamId, StatID = MTS.StatId };
             Player AK = new Player() { PlayerId = 16, PlayerName = "Alvin Kamara", PlayerJerseyNumber = 41, Age = 26, Position = "HB", TeamID = NS.TeamId, StatID = AKS.StatId };
             Player CW = new Player() { PlayerId = 17, PlayerName = "Carson Wentz", PlayerJerseyNumber = 2, Age = 28, Position = "QB", TeamID = IC.TeamId, StatID = CWS.StatId };
             Player JT = new Player() { PlayerId = 18, PlayerName = "Jonathan Taylor", PlayerJerseyNumber = 28, Age = 22, Position = "RB", TeamID = IC.TeamId, StatID = JTS.StatId };
@@ -299,7 +299,7 @@ namespace AYZ8R9_HFT_2021221.Test
             Player LF = new Player() { PlayerId = 12, PlayerName = "Leonard Fournette", PlayerJerseyNumber = 7, Age = 26, Position = "RB", TeamID = TBB.TeamId, StatID = LFS.StatId };
             Player ME = new Player() { PlayerId = 13, PlayerName = "Mike Evans", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = TBB.TeamId, StatID = MES.StatId };
             Player JW = new Player() { PlayerId = 14, PlayerName = "Jameis Winston", PlayerJerseyNumber = 2, Age = 27, Position = "QB", TeamID = NS.TeamId, StatID = JWS.StatId };
-            Player MT = new Player() { PlayerId = 15, PlayerName = "Michael Thomas", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = NS.TeamId, StatID = JWS.StatId };
+            Player MT = new Player() { PlayerId = 15, PlayerName = "Michael Thomas", PlayerJerseyNumber = 13, Age = 28, Position = "WR", TeamID = NS.TeamId, StatID = MTS.StatId };
             Player AK = new Player() { PlayerId = 16, PlayerName = "Alvin Kamara", PlayerJerseyNumber = 41, Age = 26, Position = "HB", TeamID = NS.TeamId, StatID = AKS.StatId };
             Player CW = new Player() { PlayerId = 17, PlayerName = "Carson Wentz", PlayerJerseyNumber = 2, Age = 28, Position = "QB", TeamID = IC.TeamId, StatID = CWS.StatId };
             Player JT = new Player() { PlayerId = 18, PlayerName = "Jonathan Taylor", PlayerJerseyNumber = 28, Age = 22, Position = "RB", TeamID = IC.TeamId, StatID = JTS.StatId };

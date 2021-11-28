@@ -19,9 +19,9 @@ namespace AYZ8R9_HFT_2021221.Logic
         }
         public void ChangeJerseyNumber(int id, int number)
         {
-            if (id > playerRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (number < 1 || number > 99)
             {
@@ -35,9 +35,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public void ChangeName(int id, string newName)
         {
-            if (id > playerRepo.GetAll().Count())
+            if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is too big...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             else if (newName == "")
             {
@@ -100,7 +100,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id not good...");
+                throw new WrongId("[Err] The id is not correct...");
             }
             return playerRepo.GetOne(id);
         }

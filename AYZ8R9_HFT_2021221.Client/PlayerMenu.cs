@@ -10,8 +10,8 @@ namespace AYZ8R9_HFT_2021221.Client
     static class PlayerMenu
     {
         public static void Executee(RestService rest) {
-            int choose = 0;
-            while (choose != 6)
+            string choose = "";
+            while (choose != "6")
             {
                 Console.Clear();
                 Console.WriteLine("///////////////////////");
@@ -27,40 +27,43 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("///////////////////////");
                 Console.WriteLine("If you want to create a player first you have to add a new statistic for him!");
                 Console.Write("Choose: ");
-                choose = int.Parse(Console.ReadLine());
+                choose = Console.ReadLine();
                 switch (choose)
                 {
-                    case 1:
+                    case "1":
                         Console.Clear();
                         Extension.ToProcess<Player>(GetPlayers(rest), "All players");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 2:
+                    case "2":
                         Console.Clear();
                         Console.WriteLine(GetPlayer(rest));
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 3:
+                    case "3":
                         Console.Clear();
                         Create(rest);
+                        Console.WriteLine("Player succesfully created!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 4:
+                    case "4":
                         Console.Clear();
                         Update(rest);
+                        Console.WriteLine("Player succesfully updated!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 5:
+                    case "5":
                         Console.Clear();
                         Delete(rest);
+                        Console.WriteLine("Player succesfully deleted!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 6:
+                    case "6":
                         Console.WriteLine("Leaving the table......");
                         break;
                     default:

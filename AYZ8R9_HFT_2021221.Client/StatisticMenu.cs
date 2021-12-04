@@ -11,8 +11,8 @@ namespace AYZ8R9_HFT_2021221.Client
     {
         public static void Executee(RestService rest)
         {
-            int choose = 0;
-            while (choose != 6)
+            string choose = "";
+            while (choose != "6")
             {
                 Console.Clear();
                 Console.WriteLine("///////////////////////////");
@@ -22,48 +22,52 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//    2 - Get one        //");
                 Console.WriteLine("//    3 - Create         //");
                 Console.WriteLine("//    4 - Update         //");
-                Console.WriteLine("//    6 - Exit           //");
                 Console.WriteLine("//    5 - Delete         //");
+                Console.WriteLine("//    6 - Exit           //");
                 Console.WriteLine("//                       //");
                 Console.WriteLine("///////////////////////////");
                 Console.Write("Choose: ");
-                choose = int.Parse(Console.ReadLine());
+                choose = Console.ReadLine();
                 switch (choose)
                 {
-                    case 1:
+                    case "1":
                         Console.Clear();
                         Extension.ToProcess<Statistic>(GetTeams(rest), "All statistics");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 2:
+                    case "2":
                         Console.Clear();
                         Console.WriteLine(GetTeam(rest));
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 3:
+                    case "3":
                         Console.Clear();
                         Create(rest);
+                        Console.WriteLine("Statistic succesfully created!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 4:
+                    case "4":
                         Console.Clear();
                         Update(rest);
+                        Console.WriteLine("Statistic succesfully updated!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 5:
+                    case "5":
                         Console.Clear();
                         Delete(rest);
+                        Console.WriteLine("Statistic succesfully deleted!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 6:
+                    case "6":
                         Console.WriteLine("Leaving the table......");
                         break;
                     default:
+                        Console.WriteLine("There is no option like this!");
                         break;
                 }
             }
@@ -100,34 +104,34 @@ namespace AYZ8R9_HFT_2021221.Client
             string choose = Console.ReadLine();
             if (choose == "Passing")
             {
-                Console.WriteLine("Give me the id of the statistic: ");
+                Console.Write("Give me the id of the statistic: ");
                 int pId = int.Parse(Console.ReadLine());
-                Console.WriteLine("Give me the new passingyards: ");
+                Console.Write("Give me the new passingyards: ");
                 int pYards = int.Parse(Console.ReadLine());
 
                 rest.Put(pId, "Passing", pYards.ToString(), "/stat");
             }
             else if (choose == "Rushing")
             {
-                Console.WriteLine("Give me the id of the statistic: ");
+                Console.Write("Give me the id of the statistic: ");
                 int pId = int.Parse(Console.ReadLine());
-                Console.WriteLine("Give me the new rushingyards: ");
+                Console.Write("Give me the new rushingyards: ");
                 int ruYards = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Rushing", ruYards.ToString(), "/stat");
             }
             else if (choose == "Receiving")
             {
-                Console.WriteLine("Give me the id of the statistic: ");
+                Console.Write("Give me the id of the statistic: ");
                 int pId = int.Parse(Console.ReadLine());
-                Console.WriteLine("Give me the new receivingyards: ");
+                Console.Write("Give me the new receivingyards: ");
                 int reYards = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Receiving", reYards.ToString(), "/stat");
             }
             else if (choose == "Touchdowns")
             {
-                Console.WriteLine("Give me the id of the statistic: ");
+                Console.Write("Give me the id of the statistic: ");
                 int pId = int.Parse(Console.ReadLine());
-                Console.WriteLine("Give me the new receivingyards: ");
+                Console.Write("Give me the new receivingyards: ");
                 int touchD = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Touchdowns", touchD.ToString(), "/stat");
             }

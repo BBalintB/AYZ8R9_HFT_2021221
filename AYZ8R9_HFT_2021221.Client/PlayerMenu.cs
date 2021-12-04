@@ -25,6 +25,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//    6 - Exit       //");
                 Console.WriteLine("//                   //");
                 Console.WriteLine("///////////////////////");
+                Console.WriteLine("If you want to create a player first you have to add a new statistic for him!");
                 Console.Write("Choose: ");
                 choose = int.Parse(Console.ReadLine());
                 switch (choose)
@@ -88,18 +89,11 @@ namespace AYZ8R9_HFT_2021221.Client
             string position = Console.ReadLine();
             Console.WriteLine("Age: ");
             int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Do you want to give the statistic and the team id? (Optional): ");
-            Console.WriteLine("1 - yes \n2 - no");
-            int ids = int.Parse(Console.ReadLine());
             Player pp = new Player() { PlayerName = name, PlayerJerseyNumber = jerseNumber, Position = position, Age = age };
-            if (ids == 1)
-            {
-                Console.WriteLine("Give me the stat id: ");
-                pp.StatID = int.Parse(Console.ReadLine());
-                Console.WriteLine("Give me the team id: ");
-                pp.TeamID = int.Parse(Console.ReadLine());
-                 
-            }
+            Console.WriteLine("Give me the stat id: ");
+            pp.StatID = int.Parse(Console.ReadLine());
+            Console.WriteLine("Give me the team id: ");
+            pp.TeamID = int.Parse(Console.ReadLine());    
             rest.Post<Player>(pp, "player");
         }
         static void Update(RestService rest)

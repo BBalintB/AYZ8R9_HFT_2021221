@@ -23,11 +23,11 @@ namespace AYZ8R9_HFT_2021221.Models
         [NotMapped]
         public virtual Statistic Stat { get; set; }
         [ForeignKey(nameof(Stat))]
-        public int? StatID { get; set; }
+        public int StatID { get; set; }
         [NotMapped]
         public virtual Team Teams { get; set; }
         [ForeignKey(nameof(Teams))]
-        public int? TeamID { get; set; }
+        public int TeamID { get; set; }
 
         public override string ToString()
         {

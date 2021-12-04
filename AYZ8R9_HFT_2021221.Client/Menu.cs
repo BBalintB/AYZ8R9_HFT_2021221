@@ -12,8 +12,8 @@ namespace AYZ8R9_HFT_2021221.Client
         public static void Menus() {
             Thread.Sleep(5000); //wait for 5 second
             RestService rest = new RestService("http://localhost:49978"); //gives the url to the Rest Service class
-            int choose = 0;
-            while (choose != 5)
+            string choose = "";
+            while (choose != "5")
             {
                 Console.Clear();
                 Console.WriteLine("////////////////////////");
@@ -28,22 +28,22 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//                    //");
                 Console.WriteLine("////////////////////////");
                 Console.Write("Choose: ");
-                choose = int.Parse(Console.ReadLine());
+                choose = Console.ReadLine();
                 switch (choose)
                 {
-                    case 1:
+                    case "1":
                         PlayerMenu.Executee(rest);
                         break;
-                    case 2:
+                    case "2":
                         TeamMenu.Executee(rest);
                         break;
-                    case 3:
+                    case "3":
                         StatisticMenu.Executee(rest);
                         break;
-                    case 4:
+                    case "4":
                         NonCrudMenu.Executee(rest);
                         break;
-                    case 5:
+                    case "5":
                         Console.WriteLine("Good bye!!");
                         break;
                     default:

@@ -13,9 +13,11 @@ namespace AYZ8R9_HFT_2021221.Logic
     {
         #region CRUD
         IPlayerRepository playerRepo;
-        public PlayerLogic(IPlayerRepository playerRepos)
+        ITeamRepository teamRepository;
+        public PlayerLogic(IPlayerRepository playerRepos, ITeamRepository teamRepository)
         {
             this.playerRepo = playerRepos;
+            this.teamRepository = teamRepository;
         }
         public void ChangeJerseyNumber(int id, int number)
         {
@@ -157,9 +159,9 @@ namespace AYZ8R9_HFT_2021221.Logic
         bool TheSame(string name)
         {
             bool notTheSame = false;
-            foreach (var item in playerRepo.GetAll())
+            foreach (var item in teamRepository.GetAll())
             {
-                if (item.Teams.TeamName == name)
+                if (item.TeamName == name)
                 {
                     notTheSame = true;
                 }

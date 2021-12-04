@@ -11,8 +11,8 @@ namespace AYZ8R9_HFT_2021221.Client
     {
         public static void Executee(RestService rest)
         {
-            int choose = 0;
-            while (choose != 6)
+            string choose = "";
+            while (choose != "6")
             {
                 Console.Clear();
                 Console.WriteLine("////////////////////////////////////");
@@ -27,34 +27,34 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("//                                //");
                 Console.WriteLine("////////////////////////////////////");
                 Console.Write("Choose: ");
-                choose = int.Parse(Console.ReadLine());
+                choose = Console.ReadLine();
                 switch (choose)
                 {
-                    case 1:
+                    case "1":
                         Console.Clear();
-                        Extension.ToProcess<Player>(MostReceivingYards(rest), "Player(s) with the most receivingyards");
+                        Extension.ToProcess<Player>(MostReceivingYards(rest), $"Player(s) with the most receivingyards: {MostReceivingYards(rest).FirstOrDefault().Stat.ReceivingYards}");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 2:
+                    case "2":
                         Console.Clear();
-                        Extension.ToProcess<Player>(MostRushingYards(rest), "Player(s) with the most rushingyards");
+                        Extension.ToProcess<Player>(MostRushingYards(rest), $"Player(s) with the most rushingyards: {MostRushingYards(rest).FirstOrDefault().Stat.RushingYards}");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 3:
+                    case "3":
                         Console.Clear();
-                        Extension.ToProcess<Player>(MostPassingYards(rest), "Player(s) with the most passingyards");
+                        Extension.ToProcess<Player>(MostPassingYards(rest), $"Player(s) with the most passingyards: {MostPassingYards(rest).FirstOrDefault().Stat.PassingYards}");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 4:
+                    case "4":
                         Console.Clear();
-                        Extension.ToProcess<Player>(MostTouchdowns(rest), "Player(s) with the most touchdowns");
+                        Extension.ToProcess<Player>(MostTouchdowns(rest), $"Player(s) with the most touchdowns: {MostTouchdowns(rest).FirstOrDefault().Stat.Touchdowns}");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 5:
+                    case "5":
                         Console.Clear();
                         Console.Write("Give me the team name: ");
                         string team = Console.ReadLine();
@@ -62,7 +62,7 @@ namespace AYZ8R9_HFT_2021221.Client
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
-                    case 6:
+                    case "6":
                         Console.WriteLine("Leaving the table......");
                         break;
                 }

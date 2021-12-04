@@ -15,17 +15,17 @@ namespace AYZ8R9_HFT_2021221.Client
             while (choose != 6)
             {
                 Console.Clear();
-                Console.WriteLine("///////////////////////");
-                Console.WriteLine("//       Teams       //");
-                Console.WriteLine("//                   //");
-                Console.WriteLine("//    1 - Get all    //");
-                Console.WriteLine("//    2 - Get one    //");
-                Console.WriteLine("//    3 - Create     //");
-                Console.WriteLine("//    4 - Update     //");
-                Console.WriteLine("//    5 - Delete     //");
-                Console.WriteLine("//    6 - Exit       //");
-                Console.WriteLine("//                   //");
-                Console.WriteLine("///////////////////////");
+                Console.WriteLine("///////////////////////////");
+                Console.WriteLine("//       Statistic       //");
+                Console.WriteLine("//                       //");
+                Console.WriteLine("//    1 - Get all        //");
+                Console.WriteLine("//    2 - Get one        //");
+                Console.WriteLine("//    3 - Create         //");
+                Console.WriteLine("//    4 - Update         //");
+                Console.WriteLine("//    6 - Exit           //");
+                Console.WriteLine("//    5 - Delete         //");
+                Console.WriteLine("//                       //");
+                Console.WriteLine("///////////////////////////");
                 Console.Write("Choose: ");
                 choose = int.Parse(Console.ReadLine());
                 switch (choose)

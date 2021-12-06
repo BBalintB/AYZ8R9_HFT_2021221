@@ -31,7 +31,7 @@ namespace AYZ8R9_HFT_2021221.Test
         }
 
         [Test]
-        public void CreateThrowsExceptionIfThePlayerExist()
+        public void CreateThrowsExceptionIfTheTeamExist()
         {
             Assert.Throws<AlreadyExist>(() => TeamLogic.CreateTeam(new Team() { TeamId = 1, TeamName = "Green Bay Packers", HeadCoach = "Matt LaFleur", Division = "NFC North", City = "Green Bay", Stadium = "Lambeau Field" }));
         }

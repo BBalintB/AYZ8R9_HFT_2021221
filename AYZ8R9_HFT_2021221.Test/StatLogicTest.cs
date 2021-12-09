@@ -27,13 +27,13 @@ namespace AYZ8R9_HFT_2021221.Test
         [Test]
         public void ChangeTouchdownsThrowsExceptionWrongId()
         {
-            Assert.Throws<WrongId>(() => StatLogic.ChangeTouchdowns(24, 15));
+            Assert.Throws<WrongIdException>(() => StatLogic.ChangeTouchdowns(24, 15));
         }
 
         [Test]
         public void ChangeRushingYardsThrowsExceptionYardsCantBeMinus()
         {
-            Assert.Throws<YardsCantBeMinus>(() => StatLogic.ChangeRushingyard(1, -200));
+            Assert.Throws<YardsCantBeMinusException>(() => StatLogic.ChangeRushingyard(1, -200));
         }
         private IQueryable<Statistic> FakeStatObjects()
         {

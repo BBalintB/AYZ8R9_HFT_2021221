@@ -27,13 +27,13 @@ namespace AYZ8R9_HFT_2021221.Test
         [Test]
         public void EmptyNameThrowsException()
         {
-            var xy = Assert.Throws<NameIsEmpty>(() => TeamLogic.ChangeCoach(2, ""));
+            var xy = Assert.Throws<NameIsEmptyException>(() => TeamLogic.ChangeCoach(2, ""));
         }
 
         [Test]
         public void CreateThrowsExceptionIfTheTeamExist()
         {
-            Assert.Throws<AlreadyExist>(() => TeamLogic.CreateTeam(new Team() { TeamId = 1, TeamName = "Green Bay Packers", HeadCoach = "Matt LaFleur", Division = "NFC North", City = "Green Bay", Stadium = "Lambeau Field" }));
+            Assert.Throws<AlreadyExistException>(() => TeamLogic.CreateTeam(new Team() { TeamId = 1, TeamName = "Green Bay Packers", HeadCoach = "Matt LaFleur", Division = "NFC North", City = "Green Bay", Stadium = "Lambeau Field" }));
         }
         private IQueryable<Team> FakeTeamObjects()
         {

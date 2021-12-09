@@ -28,7 +28,7 @@ namespace AYZ8R9_HFT_2021221.Test
         }
         [Test]
         public void EmptyNameThrowsException(){
-            var xy = Assert.Throws<NameIsEmpty>(() => PlayerLogic.ChangeName(2, ""));
+            var xy = Assert.Throws<NameIsEmptyException>(() => PlayerLogic.ChangeName(2, ""));
         }
         [Test]
         public void PlayerWithTheMostReceivingYardsGivesTheRightPlayer() {
@@ -68,24 +68,24 @@ namespace AYZ8R9_HFT_2021221.Test
         }
         [Test]
         public void PlayersByTeamThrowsExceptionTeamDoesNotExist() {
-            Assert.Throws<ItDoesNotExist>(() => PlayerLogic.PlayersByTeam("Dallas Cowboys"));
+            Assert.Throws<ItDoesNotExistException>(() => PlayerLogic.PlayersByTeam("Dallas Cowboys"));
         }
 
         [Test]
         public void CreateThrowsExceptionIfThePlayerExist() {
-            Assert.Throws<AlreadyExist>(() => PlayerLogic.CreatePlayer(new Player() {PlayerName = "Aaron Rodgers", PlayerJerseyNumber = 12, Age = 37, Position = "QB" }));
+            Assert.Throws<AlreadyExistException>(() => PlayerLogic.CreatePlayer(new Player() {PlayerName = "Aaron Rodgers", PlayerJerseyNumber = 12, Age = 37, Position = "QB" }));
         }
         [Test]
         public void CantDeletPlayerDoesentExistThrowsException()
         {
-            Assert.Throws<ItDoesNotExist>(() => PlayerLogic.Delete(25));
+            Assert.Throws<ItDoesNotExistException>(() => PlayerLogic.Delete(25));
         }
         [TestCase(1,0)]
         [TestCase(1,-10)]
         [TestCase(1,100)]
         public void CantChangeJerseyNumberThrowsException(int id, int number)
         {
-            Assert.Throws<JerseyNumberIsNotGood>(() => PlayerLogic.ChangeJerseyNumber(id,number));
+            Assert.Throws<JerseyNumberIsNotGoodException>(() => PlayerLogic.ChangeJerseyNumber(id,number));
         }
         private IQueryable<Player> FakePlayerObjects() {
             //-----------------------------------Teams

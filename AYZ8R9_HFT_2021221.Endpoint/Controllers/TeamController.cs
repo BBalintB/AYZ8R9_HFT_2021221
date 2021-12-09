@@ -52,8 +52,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
             catch (AlreadyExistException)
             {
+                /*******/
             }
-            
+
         }
 
         // PUT /team/5
@@ -71,9 +72,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
                     teamLogic.ChangeCoach(id, value);
                 }
             }
-            catch (WrongIdException){}
-            catch (NameIsEmptyException) { }
-            
+            catch (WrongIdException) {/*******/}
+            catch (NameIsEmptyException) { /*******/}
+
         }
 
         // DELETE /team/5
@@ -86,8 +87,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
             catch (WrongIdException)
             {
+                /*******/
             }
-            
+
         }
     }
 }

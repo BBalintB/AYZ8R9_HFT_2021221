@@ -55,8 +55,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
             catch (AlreadyExistException)
             {
+                /*******/
             }
-            
+
         }
 
         // PUT /stat
@@ -82,9 +83,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
                     statisticLogic.ChangeTouchdowns(id, stat);
                 }
             }
-            catch (WrongIdException) { }
-            catch (YardsCantBeMinusException) { }
-            
+            catch (WrongIdException) { /*******/}
+            catch (YardsCantBeMinusException) { /*******/}
+
         }
 
         // DELETE /stat/5
@@ -97,8 +98,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
             catch (WrongIdException)
             {
+                /*******/
             }
-            
+
         }
     }
 }

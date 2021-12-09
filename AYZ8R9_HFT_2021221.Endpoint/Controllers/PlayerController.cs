@@ -54,9 +54,8 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
                 PlayerLogic.CreatePlayer(value);
             }
             catch (AlreadyExistException)
-            {
-            }
-            
+            {/*******/}
+
         }
 
         // PUT /player/5/update
@@ -74,9 +73,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
                     PlayerLogic.ChangeJerseyNumber(id, int.Parse(value));
                 }
             }
-            catch (WrongIdException){}
-            catch (NameIsEmptyException){}
-            catch (JerseyNumberIsNotGoodException) { }
+            catch (WrongIdException) {/*******/}
+            catch (NameIsEmptyException) {/*******/}
+            catch (JerseyNumberIsNotGoodException) {/*******/}
             
             
         }
@@ -93,8 +92,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             }
             catch (ItDoesNotExistException)
             {
+                /*******/
             }
-            
+
         }
     }
 }

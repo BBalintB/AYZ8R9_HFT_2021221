@@ -116,7 +116,6 @@ namespace AYZ8R9_HFT_2021221.Logic
             var mostReYard = from x in playerRepo.GetAll()
                             where x.Stat.ReceivingYards.Equals(yard)
                             select x;
-            ;
             return mostReYard;
         }
 

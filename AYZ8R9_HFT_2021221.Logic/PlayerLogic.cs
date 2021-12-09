@@ -14,10 +14,12 @@ namespace AYZ8R9_HFT_2021221.Logic
         #region CRUD
         IPlayerRepository playerRepo;
         ITeamRepository teamRepository;
-        public PlayerLogic(IPlayerRepository playerRepos, ITeamRepository teamRepository)
+        IStatisticRepository statisticRepository;
+        public PlayerLogic(IPlayerRepository playerRepos, ITeamRepository teamRepository, IStatisticRepository statisticRepository)
         {
             this.playerRepo = playerRepos;
             this.teamRepository = teamRepository;
+            this.statisticRepository = statisticRepository;
         }
         public void ChangeJerseyNumber(int id, int number)
         {
@@ -110,7 +112,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         #region Non-CRUD
         public IEnumerable<Player> MostReceivingYards()
         {
-            int yard = playerRepo.GetAll().Max(x => x.Stat.ReceivingYards);
+            int yard = statisticRepository.GetAll().Max(yards => yards.ReceivingYards);
             var mostReYard = from x in playerRepo.GetAll()
                             where x.Stat.ReceivingYards.Equals(yard)
                             select x;
@@ -120,7 +122,7 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public IEnumerable<Player> MostPassingYards()
         {
-            var yard = playerRepo.GetAll().Max(x => x.Stat.PassingYards);
+            var yard = statisticRepository.GetAll().Max(yards => yards.PassingYards);
             var mostPaYard = from x in playerRepo.GetAll()
                             where x.Stat.PassingYards == yard
                             select x;
@@ -129,7 +131,7 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public IEnumerable<Player> MostRushingYards()
         {
-            var yard = playerRepo.GetAll().Max(x => x.Stat.RushingYards);
+            var yard = statisticRepository.GetAll().Max(yards => yards.RushingYards);
             var mostRuYard = from x in playerRepo.GetAll()
                              where x.Stat.RushingYards == yard
                              select x;
@@ -138,9 +140,9 @@ namespace AYZ8R9_HFT_2021221.Logic
 
         public IEnumerable<Player> MostTouchdowns()
         {
-            var yard = playerRepo.GetAll().Max(x => x.Stat.Touchdowns);
+            var TD = statisticRepository.GetAll().Max(touchdown => touchdown.Touchdowns);
             var mostTD = from x in playerRepo.GetAll()
-                             where x.Stat.Touchdowns == yard
+                             where x.Stat.Touchdowns == TD
                              select x;
             return mostTD;
         }

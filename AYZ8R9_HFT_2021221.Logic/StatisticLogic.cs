@@ -21,11 +21,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newPYards < 0)
             {
-                throw new YardsCantBeMinus("[Err] Passing yards can't be minus");
+                throw new YardsCantBeMinusException("[Err] Passing yards can't be minus");
             }
             else
             {
@@ -37,11 +37,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newReYards < 0)
             {
-                throw new YardsCantBeMinus("[Err] Receiving yards can't be minus");
+                throw new YardsCantBeMinusException("[Err] Receiving yards can't be minus");
             }
             else
             {
@@ -53,11 +53,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newRuYards < 0)
             {
-                throw new YardsCantBeMinus("[Err] Rushing yards can't be minus");
+                throw new YardsCantBeMinusException("[Err] Rushing yards can't be minus");
             }
             else
             {
@@ -69,11 +69,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newScore < 0)
             {
-                throw new YardsCantBeMinus("[Err] Touchdowns score can't be minus");
+                throw new YardsCantBeMinusException("[Err] Touchdowns score can't be minus");
             }
             else
             {
@@ -91,7 +91,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new ItDoesNotExist("[Err] The statistic is not exist...");
+                throw new ItDoesNotExistException("[Err] The statistic is not exist...");
             }
             statRepo.Delete(id);
         }
@@ -117,7 +117,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             return statRepo.GetOne(id);
         }

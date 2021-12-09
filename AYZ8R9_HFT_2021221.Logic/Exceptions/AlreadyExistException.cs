@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic.Exceptions
 {
-    public class WrongId : Exception
+    public class AlreadyExistException : Exception
     {
-        public WrongId(string message) : base(message)
+        public AlreadyExistException(string message) : base(message)
         {
         }
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic.Exceptions
 {
-    public class JerseyNumberIsNotGood : Exception
+    public class WrongIdException : Exception
     {
-        public JerseyNumberIsNotGood(string message) : base(message)
+        public WrongIdException(string message) : base(message)
         {
         }
     }

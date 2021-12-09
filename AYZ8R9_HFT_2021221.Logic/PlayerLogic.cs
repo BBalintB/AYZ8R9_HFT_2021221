@@ -23,11 +23,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (number < 1 || number > 99)
             {
-                throw new JerseyNumberIsNotGood("[Err] The jersey number is not good....");
+                throw new JerseyNumberIsNotGoodException("[Err] The jersey number is not good....");
             }
             else {
                 playerRepo.ChangeJerseyNumber(id, number);
@@ -39,11 +39,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newName == "")
             {
-                throw new NameIsEmpty("[Err] The name is empty....");
+                throw new NameIsEmptyException("[Err] The name is empty....");
             }
             else {
                 playerRepo.ChangeName(id, newName);
@@ -55,7 +55,7 @@ namespace AYZ8R9_HFT_2021221.Logic
             
             if (TheSame(NewPlayer))
             {
-                throw new AlreadyExist("[Err] The player is already exist...");
+                throw new AlreadyExistException("[Err] The player is already exist...");
             }
             playerRepo.Create(NewPlayer);
         }
@@ -76,7 +76,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new ItDoesNotExist("[Err] The player is not exist...");
+                throw new ItDoesNotExistException("[Err] The player is not exist...");
             }
             playerRepo.Delete(id);
         }
@@ -102,7 +102,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             return playerRepo.GetOne(id);
         }
@@ -149,7 +149,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(name))
             {
-                throw new ItDoesNotExist($"The team with the name: {name} does not exist..");
+                throw new ItDoesNotExistException($"The team with the name: {name} does not exist..");
             }
             var team = from x in playerRepo.GetAll()
                         where x.Teams.TeamName == name

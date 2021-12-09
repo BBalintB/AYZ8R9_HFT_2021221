@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AYZ8R9_HFT_2021221.Logic.Exceptions
 {
-    public class NameIsEmpty : Exception
+    public class ItDoesNotExistException : Exception
     {
-        public NameIsEmpty(string message) : base(message)
+        public ItDoesNotExistException(string message) : base(message)
         {
         }
     }

@@ -20,11 +20,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newCoach == "")
             {
-                throw new NameIsEmpty("[Err] The name is empty....");
+                throw new NameIsEmptyException("[Err] The name is empty....");
             }
             else
             {
@@ -36,11 +36,11 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             else if (newName == "")
             {
-                throw new NameIsEmpty("[Err] The name is empty....");
+                throw new NameIsEmptyException("[Err] The name is empty....");
             }
             else
             {
@@ -52,7 +52,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (TheSame(NewTeam))
             {
-                throw new AlreadyExist("[Err] The team is already exist...");
+                throw new AlreadyExistException("[Err] The team is already exist...");
             }
             teamRepo.Create(NewTeam);
         }
@@ -73,7 +73,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new ItDoesNotExist("[Err] The team is not exist...");
+                throw new ItDoesNotExistException("[Err] The team is not exist...");
             }
             teamRepo.Delete(id);
         }
@@ -100,7 +100,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         {
             if (!TheSame(id))
             {
-                throw new WrongId("[Err] The id is not correct...");
+                throw new WrongIdException("[Err] The id is not correct...");
             }
             return teamRepo.GetOne(id);
         }

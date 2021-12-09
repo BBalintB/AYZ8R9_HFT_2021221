@@ -34,27 +34,50 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpGet("{id}")]
         public Player Get(int id)
         {
-            return PlayerLogic.GetPlayer(id);
+            try
+            {
+                return PlayerLogic.GetPlayer(id);
+            }
+            catch (WrongIdException)
+            {
+                return null;
+            }
+            
         }
 
         // POST /player
         [HttpPost]
         public void Post([FromBody] Player value)
         {
-            PlayerLogic.CreatePlayer(value);
+            try
+            {
+                PlayerLogic.CreatePlayer(value);
+            }
+            catch (AlreadyExistException)
+            {
+            }
+            
         }
 
         // PUT /player/5/update
         [HttpPut("{id}/{update}")]
         public void Put(int id,string update, [FromBody] string value)
         {
-            if (update == "name")
+            try
             {
-                PlayerLogic.ChangeName(id, value);
+                if (update == "name")
+                {
+                    PlayerLogic.ChangeName(id, value);
+                }
+                else if (update == "jersey")
+                {
+                    PlayerLogic.ChangeJerseyNumber(id, int.Parse(value));
+                }
             }
-            else if(update == "jersey"){
-                PlayerLogic.ChangeJerseyNumber(id, int.Parse(value));
-            }
+            catch (WrongIdException){}
+            catch (NameIsEmptyException){}
+            catch (JerseyNumberIsNotGoodException) { }
+            
             
         }
 
@@ -64,7 +87,14 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            PlayerLogic.Delete(id);
+            try
+            {
+                PlayerLogic.Delete(id);
+            }
+            catch (ItDoesNotExistException)
+            {
+            }
+            
         }
     }
 }

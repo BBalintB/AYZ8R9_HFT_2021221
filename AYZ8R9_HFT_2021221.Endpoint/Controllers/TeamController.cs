@@ -1,4 +1,5 @@
 ﻿using AYZ8R9_HFT_2021221.Logic;
+using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -30,35 +31,63 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpGet("{id}")]
         public Team Get(int id)
         {
-            return teamLogic.GetTeam(id);
+            try
+            {
+                return teamLogic.GetTeam(id);
+            }
+            catch (WrongIdException)
+            {
+                return null;
+            }
+            
         }
 
         // POST /team
         [HttpPost]
         public void Post([FromBody] Team value)
         {
-            teamLogic.CreateTeam(value);
+            try
+            {
+                teamLogic.CreateTeam(value);
+            }
+            catch (AlreadyExistException)
+            {
+            }
+            
         }
 
         // PUT /team/5
         [HttpPut("{id}/{choose}")]
         public void Put(int id,string choose, [FromBody] string value)
         {
-            if (choose == "team")
+            try
             {
-                teamLogic.ChangeTeamName(id, value);
+                if (choose == "team")
+                {
+                    teamLogic.ChangeTeamName(id, value);
+                }
+                else if (choose == "coach")
+                {
+                    teamLogic.ChangeCoach(id, value);
+                }
             }
-            else if(choose == "coach")
-            {
-                teamLogic.ChangeCoach(id, value);
-            }
+            catch (WrongIdException){}
+            catch (NameIsEmptyException) { }
+            
         }
 
         // DELETE /team/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            teamLogic.DeleteTeam(id);
+            try
+            {
+                teamLogic.DeleteTeam(id);
+            }
+            catch (WrongIdException)
+            {
+            }
+            
         }
     }
 }

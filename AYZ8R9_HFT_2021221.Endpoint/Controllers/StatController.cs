@@ -1,4 +1,5 @@
 ﻿using AYZ8R9_HFT_2021221.Logic;
+using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -32,40 +33,72 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpGet("{id}")]
         public Statistic Get(int id)
         {
-            return statisticLogic.GetStastic(id);
+            try
+            {
+                return statisticLogic.GetStastic(id);
+            }
+            catch (WrongIdException)
+            {
+
+                return null;
+            }
+            
         }
 
         // POST /stat
         [HttpPost]
         public void Post([FromBody] Statistic value)
         {
-            statisticLogic.CreateStatistic(value);
+            try
+            {
+                statisticLogic.CreateStatistic(value);
+            }
+            catch (AlreadyExistException)
+            {
+            }
+            
         }
 
         // PUT /stat
         [HttpPut("{id}/{choose}")]
         public void Put(int id,string choose,[FromBody] int stat)
         {
-            if (choose == "Passing")
+            try
             {
-                statisticLogic.ChangePassingyard(id, stat);
+                if (choose == "Passing")
+                {
+                    statisticLogic.ChangePassingyard(id, stat);
+                }
+                else if (choose == "Rushing")
+                {
+                    statisticLogic.ChangeRushingyard(id, stat);
+                }
+                else if (choose == "Receiving")
+                {
+                    statisticLogic.ChangeRecievingyard(id, stat);
+                }
+                else if (choose == "Touchdowns")
+                {
+                    statisticLogic.ChangeTouchdowns(id, stat);
+                }
             }
-            else if (choose == "Rushing") {
-                statisticLogic.ChangeRushingyard(id, stat);
-            }
-            else if (choose == "Receiving") {
-                statisticLogic.ChangeRecievingyard(id, stat);
-            }
-            else if (choose == "Touchdowns") {
-                statisticLogic.ChangeTouchdowns(id, stat);
-            }
+            catch (WrongIdException) { }
+            catch (YardsCantBeMinusException) { }
+            
         }
 
         // DELETE /stat/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            statisticLogic.DeleteStatistic(id);
+            try
+            {
+                statisticLogic.DeleteStatistic(id);
+            }
+            catch (WrongIdException)
+            {
+            }
+            
         }
     }
 }

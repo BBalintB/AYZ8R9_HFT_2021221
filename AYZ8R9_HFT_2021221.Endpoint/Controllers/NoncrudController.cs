@@ -49,7 +49,16 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         [HttpGet("{Team}")]
         public IEnumerable<Player> PlayersByTeam(string team)
         {
-            return playerLogic.PlayersByTeam(team);
+            try
+            {
+                return playerLogic.PlayersByTeam(team);
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            
         }
     }
 }

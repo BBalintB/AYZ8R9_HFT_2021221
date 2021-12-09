@@ -24,7 +24,7 @@ namespace AYZ8R9_HFT_2021221.Test
             mockedTeamRepo.Setup(x => x.GetAll()).Returns(this.FakeTeamObjects);
             mockedPlayerRepo.Setup(x => x.GetAll()).Returns(this.FakePlayerObjects);
             mockedStatRepo.Setup(x => x.GetAll()).Returns(this.FakeStatObjects);
-            this.PlayerLogic = new PlayerLogic(mockedPlayerRepo.Object,mockedTeamRepo.Object);
+            this.PlayerLogic = new PlayerLogic(mockedPlayerRepo.Object,mockedTeamRepo.Object,mockedStatRepo.Object);
         }
         [Test]
         public void EmptyNameThrowsException(){

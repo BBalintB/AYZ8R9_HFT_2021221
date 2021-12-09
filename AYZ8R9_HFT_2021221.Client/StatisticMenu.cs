@@ -38,28 +38,32 @@ namespace AYZ8R9_HFT_2021221.Client
                         break;
                     case "2":
                         Console.Clear();
-                        Console.WriteLine(GetTeam(rest));
+                        var test = GetTeam(rest);
+                        if (test == null)
+                        {
+                            Console.WriteLine("Statistic with this id does not exist!");
+                        }
+                        else {
+                            Console.WriteLine(test);
+                        }
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "3":
                         Console.Clear();
                         Create(rest);
-                        Console.WriteLine("Statistic succesfully created!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "4":
                         Console.Clear();
                         Update(rest);
-                        Console.WriteLine("Statistic succesfully updated!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "5":
                         Console.Clear();
                         Delete(rest);
-                        Console.WriteLine("Statistic succesfully deleted!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
@@ -95,8 +99,8 @@ namespace AYZ8R9_HFT_2021221.Client
             Console.Write("Touchdowns: ");
             int touchD = int.Parse(Console.ReadLine());
             Statistic stat = new Statistic() { PassingYards = pYards, RushingYards = ruYards, ReceivingYards = reYards, Touchdowns = touchD };
-
             rest.Post<Statistic>(stat, "/stat");
+            Console.WriteLine("Statistic succesfully created!");
         }
         static void Update(RestService rest)
         {
@@ -108,8 +112,8 @@ namespace AYZ8R9_HFT_2021221.Client
                 int pId = int.Parse(Console.ReadLine());
                 Console.Write("Give me the new passingyards: ");
                 int pYards = int.Parse(Console.ReadLine());
-
                 rest.Put(pId, "Passing", pYards.ToString(), "/stat");
+                Console.WriteLine("Statistic succesfully updated!");
             }
             else if (choose == "Rushing")
             {
@@ -118,6 +122,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.Write("Give me the new rushingyards: ");
                 int ruYards = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Rushing", ruYards.ToString(), "/stat");
+                Console.WriteLine("Statistic succesfully updated!");
             }
             else if (choose == "Receiving")
             {
@@ -126,6 +131,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.Write("Give me the new receivingyards: ");
                 int reYards = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Receiving", reYards.ToString(), "/stat");
+                Console.WriteLine("Statistic succesfully updated!");
             }
             else if (choose == "Touchdowns")
             {
@@ -134,6 +140,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.Write("Give me the new receivingyards: ");
                 int touchD = int.Parse(Console.ReadLine());
                 rest.Put(pId, "Touchdowns", touchD.ToString(), "/stat");
+                Console.WriteLine("Statistic succesfully updated!");
             }
             else
             {
@@ -145,6 +152,7 @@ namespace AYZ8R9_HFT_2021221.Client
             Console.WriteLine("Give me the id that you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "/stat");
+            Console.WriteLine("Statistic succesfully deleted!");
         }
     }
 }

@@ -38,28 +38,35 @@ namespace AYZ8R9_HFT_2021221.Client
                         break;
                     case "2":
                         Console.Clear();
-                        Console.WriteLine(GetPlayer(rest));
+                        var test = GetPlayer(rest);
+                        if (test == null)
+                        {
+                            Console.WriteLine("The player with the id does not exist!");
+                        }
+                        else {
+                            Console.WriteLine(test);
+                        }
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "3":
                         Console.Clear();
                         Create(rest);
-                        Console.WriteLine("Player succesfully created!");
+                        
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "4":
                         Console.Clear();
                         Update(rest);
-                        Console.WriteLine("Player succesfully updated!");
+                        
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "5":
                         Console.Clear();
                         Delete(rest);
-                        Console.WriteLine("Player succesfully deleted!");
+                        
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
@@ -98,6 +105,7 @@ namespace AYZ8R9_HFT_2021221.Client
             Console.WriteLine("Give me the team id: ");
             pp.TeamID = int.Parse(Console.ReadLine());    
             rest.Post<Player>(pp, "player");
+            Console.WriteLine("Player succesfully created!");
         }
         static void Update(RestService rest)
         {
@@ -111,6 +119,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 string name = Console.ReadLine();
                 
                 rest.Put(pId, "name", name, "player");
+                Console.WriteLine("Player succesfully updated!");
             }
             else if (choose == "jersey")
             {
@@ -119,16 +128,19 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("Give me the new jersey number: ");
                 int number = int.Parse(Console.ReadLine());
                 rest.Put(pId, "jersey", number.ToString(), "player");
+                Console.WriteLine("Player succesfully updated!");
             }
             else {
                 Console.WriteLine("Theres is no option like this: "+choose);
             }
+
         }
         static void Delete(RestService rest)
         {
             Console.WriteLine("Give me the id that you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "player");
+            Console.WriteLine("Player succesfully deleted!");
         }
     }
 }

@@ -58,7 +58,14 @@ namespace AYZ8R9_HFT_2021221.Client
                         Console.Clear();
                         Console.Write("Give me the team name: ");
                         string team = Console.ReadLine();
-                        Extension.ToProcess<Player>(PlayersByTeam(rest,team), team);
+                        var test = PlayersByTeam(rest, team);
+                        if (test == null)
+                        {
+                            Console.WriteLine("The team does not exist!");
+                        }
+                        else {
+                            Extension.ToProcess<Player>(test, team);
+                        }
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
@@ -87,7 +94,7 @@ namespace AYZ8R9_HFT_2021221.Client
 
         static IEnumerable<Player> PlayersByTeam(RestService rest, string team)
         {
-           
+         
             return rest.Get<Player>("/Noncrud/PlayersByTeam/"+team);
         }
     }

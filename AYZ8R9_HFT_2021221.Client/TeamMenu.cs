@@ -38,28 +38,32 @@ namespace AYZ8R9_HFT_2021221.Client
                         break;
                     case "2":
                         Console.Clear();
-                        Console.WriteLine(GetTeam(rest));
+                        var test = GetTeam(rest);
+                        if (test == null)
+                        {
+                            Console.WriteLine("Team with that id does not exist!");
+                        }
+                        else {
+                            Console.WriteLine(test);
+                        }
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "3":
                         Console.Clear();
                         Create(rest);
-                        Console.WriteLine("Team succesfully created!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "4":
                         Console.Clear();
                         Update(rest);
-                        Console.WriteLine("Team succesfully updated!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
                     case "5":
                         Console.Clear();
                         Delete(rest);
-                        Console.WriteLine("Team succesfully deleted!");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadLine();
                         break;
@@ -96,8 +100,8 @@ namespace AYZ8R9_HFT_2021221.Client
             Console.Write("Division: ");
             string division = Console.ReadLine();
             Team nt = new Team() { TeamName = name, HeadCoach = cName, Stadium = stadium, City = city, Division = division };
-            
             rest.Post<Team>(nt, "/team");
+            Console.WriteLine("Team succesfully created!");
         }
         static void Update(RestService rest)
         {
@@ -109,8 +113,8 @@ namespace AYZ8R9_HFT_2021221.Client
                 int pId = int.Parse(Console.ReadLine());
                 Console.WriteLine("Give me the new name: ");
                 string name = Console.ReadLine();
-
                 rest.Put(pId, "team", name, "/team");
+                Console.WriteLine("Team succesfully updated!");
             }
             else if (choose == "coach")
             {
@@ -119,6 +123,7 @@ namespace AYZ8R9_HFT_2021221.Client
                 Console.WriteLine("Give me the new coach name: ");
                 string name = Console.ReadLine();
                 rest.Put(pId, "coach", name, "/team");
+                Console.WriteLine("Team succesfully updated!");
             }
             else
             {
@@ -130,6 +135,7 @@ namespace AYZ8R9_HFT_2021221.Client
             Console.WriteLine("Give me the id that you want to delete: ");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "/team");
+            Console.WriteLine("Team succesfully deleted!");
         }
     }
 }

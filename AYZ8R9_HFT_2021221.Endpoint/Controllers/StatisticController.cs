@@ -1,7 +1,9 @@
-﻿using AYZ8R9_HFT_2021221.Logic;
+﻿using AYZ8R9_HFT_2021221.Endpoint.Services;
+using AYZ8R9_HFT_2021221.Logic;
 using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +15,25 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class StatController : ControllerBase
+    public class StatisticController : ControllerBase
     {
         
 
         IStatisticLogic statisticLogic;
-        public StatController(IStatisticLogic statisticLogic)
+        IHubContext<SignalRHub> hub;
+        public StatisticController(IStatisticLogic statisticLogic, IHubContext<SignalRHub> hub)
         {
             this.statisticLogic = statisticLogic;
+            this.hub = hub;
         }
-        // GET: /stat
+        // GET: /Statistic
         [HttpGet]
         public IEnumerable<Statistic> Get()
         {
             return statisticLogic.GetAllStatistic();
         }
 
-        // GET /stat/5
+        // GET /Statistic/5
         [HttpGet("{id}")]
         public Statistic Get(int id)
         {
@@ -45,13 +49,14 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             
         }
 
-        // POST /stat
+        // POST /Statistic
         [HttpPost]
         public void Post([FromBody] Statistic value)
         {
             try
             {
                 statisticLogic.CreateStatistic(value);
+                hub.Clients.All.SendAsync("StatisticCreated", value);
             }
             catch (AlreadyExistException)
             {
@@ -60,9 +65,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
 
         }
 
-        // PUT /stat
+        // PUT /Statistic
         [HttpPut("{id}/{choose}")]
-        public void Put(int id,string choose,[FromBody] int stat)
+        public void Put(int id, string choose, [FromBody] int stat)
         {
             try
             {
@@ -82,19 +87,31 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
                 {
                     statisticLogic.ChangeTouchdowns(id, stat);
                 }
+                var staT = statisticLogic.GetStastic(id);
+                hub.Clients.All.SendAsync("StatisticDeleted", stat);
             }
             catch (WrongIdException) { /*******/}
             catch (YardsCantBeMinusException) { /*******/}
 
         }
 
-        // DELETE /stat/5
+        [HttpPut]
+        public void Put([FromBody] Statistic value)
+        {
+            statisticLogic.Change(value);
+            hub.Clients.All.SendAsync("StatisticUpdated", value);
+
+        }
+
+        // DELETE /Statistic/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             try
             {
+                var stat = statisticLogic.GetStastic(id);
                 statisticLogic.DeleteStatistic(id);
+                hub.Clients.All.SendAsync("StatisticDeleted", stat);
             }
             catch (WrongIdException)
             {

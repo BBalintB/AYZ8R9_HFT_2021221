@@ -1,7 +1,9 @@
-﻿using AYZ8R9_HFT_2021221.Logic;
+﻿using AYZ8R9_HFT_2021221.Endpoint.Services;
+using AYZ8R9_HFT_2021221.Logic;
 using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +19,12 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
     {
 
         IPlayerLogic PlayerLogic;
+        IHubContext<SignalRHub> hub;
 
-        public PlayerController(IPlayerLogic playerLogic)
+        public PlayerController(IPlayerLogic playerLogic, IHubContext<SignalRHub> hub)
         {
             this.PlayerLogic = playerLogic;
+            this.hub = hub;
         }
 
         // GET: /player
@@ -52,6 +56,7 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             try
             {
                 PlayerLogic.CreatePlayer(value);
+                hub.Clients.All.SendAsync("PlayerCreated", value);
             }
             catch (AlreadyExistException)
             {/*******/}
@@ -80,7 +85,15 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             
         }
 
-        
+        [HttpPut]
+        public void Put([FromBody] Player value)
+        {
+            PlayerLogic.ChangePlayer(value);
+            hub.Clients.All.SendAsync("PlayerUpdated", value);
+
+        }
+
+
 
         // DELETE /player/5
         [HttpDelete("{id}")]
@@ -88,7 +101,9 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
         {
             try
             {
+                var deletedPlayer = PlayerLogic.GetPlayer(id);
                 PlayerLogic.Delete(id);
+                hub.Clients.All.SendAsync("PlayerDeleted", deletedPlayer);
             }
             catch (ItDoesNotExistException)
             {

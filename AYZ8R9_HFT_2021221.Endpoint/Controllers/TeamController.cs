@@ -1,7 +1,9 @@
-﻿using AYZ8R9_HFT_2021221.Logic;
+﻿using AYZ8R9_HFT_2021221.Endpoint.Services;
+using AYZ8R9_HFT_2021221.Logic;
 using AYZ8R9_HFT_2021221.Logic.Exceptions;
 using AYZ8R9_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,11 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
     public class TeamController : ControllerBase
     {
         ITeamLogic teamLogic;
-        public TeamController(ITeamLogic teamLogic)
+        IHubContext<SignalRHub> hub;
+        public TeamController(ITeamLogic teamLogic, IHubContext<SignalRHub> hub)
         {
             this.teamLogic = teamLogic;
+            this.hub = hub;
         }
         // GET: /team
         [HttpGet]
@@ -49,6 +53,7 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
             try
             {
                 teamLogic.CreateTeam(value);
+                hub.Clients.All.SendAsync("TeamCreated", value);
             }
             catch (AlreadyExistException)
             {
@@ -77,13 +82,23 @@ namespace AYZ8R9_HFT_2021221.Endpoint.Controllers
 
         }
 
+        [HttpPut]
+        public void Put([FromBody] Team value)
+        {
+            teamLogic.Change(value);
+            hub.Clients.All.SendAsync("TeamUpdated", value);
+
+        }
+
         // DELETE /team/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             try
             {
+                var deleedteam = teamLogic.GetTeam(id);
                 teamLogic.DeleteTeam(id);
+                hub.Clients.All.SendAsync("TeamDeleted", deleedteam);
             }
             catch (WrongIdException)
             {

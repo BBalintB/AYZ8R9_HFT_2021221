@@ -52,6 +52,10 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
         }
 
+        public void ChangePlayer(Player player) {
+            playerRepo.Change(player);
+        }
+
         public void CreatePlayer(Player NewPlayer)
         {
             

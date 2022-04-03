@@ -15,6 +15,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         void Delete(int id);
         void ChangeName(int id, string newName);
         void ChangeJerseyNumber(int id, int number);
+        void ChangePlayer(Player player);
         IEnumerable<Player> GetAllPlayers();
         //non-crud
         IEnumerable<Player> MostReceivingYards();

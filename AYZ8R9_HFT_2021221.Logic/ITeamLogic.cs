@@ -12,6 +12,7 @@ namespace AYZ8R9_HFT_2021221.Logic
         Team GetTeam(int id);
         void ChangeTeamName(int id, string newName);
         void ChangeCoach(int id, string newCoach);
+        void Change(Team stat);
         void CreateTeam(Team NewTeam);
         void DeleteTeam(int id);
         IEnumerable<Team> GetAllTeams();

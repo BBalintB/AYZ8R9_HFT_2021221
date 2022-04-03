@@ -81,6 +81,10 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
         }
 
+        public void Change(Statistic stat) {
+            statRepo.Change(stat);
+        }
+
         public void CreateStatistic(Statistic NewStatistic)
         {
             statRepo.Create(NewStatistic);

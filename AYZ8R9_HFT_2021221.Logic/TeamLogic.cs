@@ -48,6 +48,11 @@ namespace AYZ8R9_HFT_2021221.Logic
             }
         }
 
+        public void Change(Team stat)
+        {
+            teamRepo.Change(stat);
+        }
+
         public void CreateTeam(Team NewTeam)
         {
             if (TheSame(NewTeam))

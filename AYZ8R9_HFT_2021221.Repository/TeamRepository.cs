@@ -41,6 +41,23 @@ namespace AYZ8R9_HFT_2021221.Repository
             ctx.SaveChanges();
         }
 
+        public void Change(Team other)
+        {
+            var stat = GetOne(other.TeamId);
+            if (stat == null)
+            {
+
+            }
+            foreach (var item in stat.GetType().GetProperties())
+            {
+                if (item.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    item.SetValue(stat, item.GetValue(other));
+                }
+            }
+            ctx.SaveChanges();
+        }
+
         public override Team GetOne(int id)
         {
             return GetAll().FirstOrDefault(x => x.TeamId == id);

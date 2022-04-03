@@ -25,6 +25,22 @@ namespace AYZ8R9_HFT_2021221.Repository
             ctx.SaveChanges();
         }
 
+        public void Change(Player player) {
+            var stat = GetOne(player.PlayerId);
+            if (stat == null)
+            {
+
+            }
+            foreach (var item in stat.GetType().GetProperties())
+            {
+                if (item.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    item.SetValue(stat, item.GetValue(player));
+                }
+            }
+            ctx.SaveChanges();
+        }
+
         public override void Create(Player NewPlayer)
         {
             ctx.Add(NewPlayer);

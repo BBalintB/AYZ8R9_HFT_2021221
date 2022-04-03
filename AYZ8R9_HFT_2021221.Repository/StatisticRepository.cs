@@ -42,6 +42,23 @@ namespace AYZ8R9_HFT_2021221.Repository
             ctx.SaveChanges();
         }
 
+        public void Change(Statistic other)
+        {
+            var stat = GetOne(other.StatId);
+            if (stat == null)
+            {
+                throw new ArgumentException("Item not exist...");
+            }
+            foreach (var item in stat.GetType().GetProperties())
+            {
+                if (item.GetAccessors().FirstOrDefault(t=>t.IsVirtual)==null)
+                {
+                    item.SetValue(stat, item.GetValue(other));
+                }
+            }
+            ctx.SaveChanges();
+        }
+
         public override void Create(Statistic NewStatistic)
         {
             ctx.Add(NewStatistic);

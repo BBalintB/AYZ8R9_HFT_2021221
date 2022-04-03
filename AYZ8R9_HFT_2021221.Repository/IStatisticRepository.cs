@@ -13,5 +13,6 @@ namespace AYZ8R9_HFT_2021221.Repository
         void ChangePassingyard(int id, int newPYards);// change the passing yards
         void ChangeRushingyard(int id, int newRuYards);//change the rushing yards
         void ChangeRecievingyard(int id, int newReYards);//change the recieving yards
+        void Change(Statistic other);
     }
 }

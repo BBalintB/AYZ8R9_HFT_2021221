@@ -11,5 +11,6 @@ namespace AYZ8R9_HFT_2021221.Repository
     {
         void ChangeName(int id, string newName);//change the team name
         void Changecoach(int id, string newCoach);//change the coach name
+        void Change(Team other);
     }
 }

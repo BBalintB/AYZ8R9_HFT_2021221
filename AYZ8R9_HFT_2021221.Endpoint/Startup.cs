@@ -1,4 +1,5 @@
 using AYZ8R9_HFT_2021221.Data;
+using AYZ8R9_HFT_2021221.Endpoint.Services;
 using AYZ8R9_HFT_2021221.Logic;
 using AYZ8R9_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,8 @@ namespace AYZ8R9_HFT_2021221.Endpoint
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<IStatisticRepository, StatisticRepository>();
 
+            services.AddSignalR();
+
             services.AddSingleton<DbContext, PlayersContext>();
         }
 
@@ -41,11 +44,18 @@ namespace AYZ8R9_HFT_2021221.Endpoint
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x=>x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:2717"));
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

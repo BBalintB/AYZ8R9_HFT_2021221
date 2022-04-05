@@ -91,7 +91,7 @@ namespace AYZ8R9_HFT_20211221.WpfClient.ViewModels
                     Players.Delete(SelectedPlayer.PlayerId);
                 },
                 () => {
-                    return SelectedPlayer != null;
+                    return SelectedPlayer.PlayerName != null;
                 });
 
                 SelectedPlayer = new Player();

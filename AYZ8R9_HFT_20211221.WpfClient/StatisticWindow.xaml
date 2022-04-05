@@ -32,6 +32,7 @@
                             <Label Grid.Row="2" Content="{Binding RushingYards}" ContentStringFormat="Rushing yards: {0}"/>
                             <Label Grid.Row="3" Content="{Binding ReceivingYards}" ContentStringFormat="Receiving yards: {0}"/>
                             <Label Grid.Row="4" Content="{Binding Touchdowns}" ContentStringFormat="Touchdowns: {0}"/>
+                            
                         </Grid>
                     </Border>
                 </DataTemplate>

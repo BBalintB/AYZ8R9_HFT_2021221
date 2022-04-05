@@ -1,4 +1,4 @@
-﻿let statistics = [];
+﻿let players = [];
 let  connection = null;
 gettData();
 setupSignalR();
@@ -8,15 +8,15 @@ function setupSignalR() {
         .withUrl("http://localhost:49978/hub")
         .configureLogging(signalR.LogLevel.Information)
         .build();
-    connection.on("StatisticCreated", (user, message) => {
+    connection.on("PlayerCreated", (user, message) => {
         gettData();
     });
 
-    connection.on("StatisticUpdated", (user, message) => {
+    connection.on("PlayerUpdated", (user, message) => {
         gettData();
     });
 
-    connection.on("StatisticDeleted", (user, message) => {
+    connection.on("PlayerDeleted", (user, message) => {
         gettData();
     });
 
@@ -37,10 +37,12 @@ async function start() {
 };
 
 async function gettData() {
-    await fetch('http://localhost:49978/statistic')
+    await fetch('http://localhost:49978/player')
         .then(x => x.json())
         .then(y => {
-            statistics = y;
+            players = y;
+            console.log(players);
+
             display();
         });
 }
@@ -51,21 +53,23 @@ async function gettData() {
 
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    statistics.forEach(t => {
+    players.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.statId + "</td><td>"
-            + t.passingYards + "</td><td>"
-            + t.receivingYards + "</td><td>"
-            + t.rushingYards + "</td><td>"
-            + t.touchdowns + "</td><td>"
-        + `<button type="button" onclick="remove('${t.statId}')">Delete</button><button type="button" onclick="update('${t.statId}')">Update</button>` + "</td></tr>";
+            "<tr><td>" + t.playerId + "</td><td>"
+            + t.playerName + "</td><td>"
+            + t.playerJerseyNumber + "</td><td>"
+            + t.position + "</td><td>"
+            + t.age + "</td><td>"
+            + t.statID + "</td><td>"
+            + t.teamID + "</td><td>"
+        + `<button type="button" onclick="remove('${t.playerId}')">Delete</button><button type="button" onclick="update('${t.playerId}')">Update</button>` + "</td></tr>";
 
 
     });
 }
 
 function remove(id) {
-    fetch('http://localhost:49978/statistic/' + id, {
+    fetch('http://localhost:49978/player/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -80,21 +84,26 @@ function remove(id) {
 }
 
 function create() {
-    let passsingYards = document.getElementById('pYards').value;
-    let receivingYards = document.getElementById('reYards').value;
-    let rushingYards = document.getElementById('ruYards').value;
-    let touchdowns = document.getElementById('tDs').value;
-    fetch('http://localhost:49978/statistic', {
+    let name = document.getElementById('pName').value;
+    let jersey = document.getElementById('pJersey').value;
+    let position = document.getElementById('pPosition').value;
+    let age = document.getElementById('pAge').value;
+    let  statid = document.getElementById('pStatId').value;
+    let teamid = document.getElementById('pTeamId').value;
+    fetch('http://localhost:49978/player', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(
             {
-                passingYards: passsingYards,
-                receivingYards: receivingYards,
-                rushingYards: rushingYards,
-                touchdowns: touchdowns
+                playerName: name,
+                playerJerseyNumber: jersey,
+                position: position,
+                age: age,
+                statID: statid,
+                teamID:teamid
+
             }),
     })
         .then(response => response)
@@ -109,22 +118,26 @@ function create() {
 }
 
 function update(id) {
-    let passsingYards = document.getElementById('pYards').value;
-    let receivingYards = document.getElementById('reYards').value;
-    let rushingYards = document.getElementById('ruYards').value;
-    let touchdowns = document.getElementById('tDs').value;
-    fetch('http://localhost:49978/statistic', {
+    let name = document.getElementById('pName').value;
+    let jersey = document.getElementById('pJersey').value;
+    let position = document.getElementById('pPosition').value;
+    let age = document.getElementById('pAge').value;
+    let statid = document.getElementById('pStatId').value;
+    let teamid = document.getElementById('pTeamId').value;
+    fetch('http://localhost:49978/player', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(
             {
-                statId:id,
-                passingYards: passsingYards,
-                receivingYards: receivingYards,
-                rushingYards: rushingYards,
-                touchdowns: touchdowns
+                playerId:id,
+                playerName: name,
+                playerJerseyNumber: jersey,
+                position: position,
+                age: age,
+                statID: statid,
+                teamID: teamid
             }),
     })
         .then(response => response)

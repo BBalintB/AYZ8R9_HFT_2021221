@@ -10,7 +10,7 @@
   "profiles": {
     "IIS Express": {
         "commandName": "IISExpress",
-        "launchUrl": "Statistic.html",
+        "launchUrl": "Player.html",
         "launchBrowser": true,
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
@@ -19,7 +19,7 @@
     "AYZ8R9_HFT_2021221.JSClient": {
       "commandName": "Project",
         "dotnetRunMessages": "true",
-        "launchUrl": "Statistic.html",
+        "launchUrl": "Player.html",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {

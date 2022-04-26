@@ -36,9 +36,7 @@ namespace AYZ8R9_HFT_20211221.WpfClient.ViewModels
                         PlayerJerseyNumber = value.PlayerJerseyNumber,
                         Age = value.Age,
                         Position = value.Position,
-                        Stat = value.Stat,
                         StatID = value.StatID,
-                        Teams = value.Teams,
                         TeamID = value.TeamID
 
                     };
@@ -73,9 +71,7 @@ namespace AYZ8R9_HFT_20211221.WpfClient.ViewModels
                         PlayerJerseyNumber = SelectedPlayer.PlayerJerseyNumber,
                         Age =  SelectedPlayer.Age,
                         Position = SelectedPlayer.Position,
-                        Stat = SelectedPlayer.Stat,
                         StatID = SelectedPlayer.StatID,
-                        Teams = SelectedPlayer.Teams,
                         TeamID = SelectedPlayer.TeamID
                     });
                 });
